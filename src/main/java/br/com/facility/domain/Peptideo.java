@@ -2,6 +2,7 @@ package br.com.facility.domain;
 
 import org.springframework.data.annotation.Id;
 
+import br.com.facility.enums.TipoPeptideo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
