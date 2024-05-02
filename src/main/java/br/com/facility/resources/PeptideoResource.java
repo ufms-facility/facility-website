@@ -1,6 +1,5 @@
 package br.com.facility.resources;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,45 +43,28 @@ public class PeptideoResource {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Peptideo> update(@PathVariable("id") Long id, @RequestBody Peptideo peptideo) {
-//		return peptideoService.findById(id).map(record -> {
-//	        record.setPeptideo(peptideo.getPeptideo());
-//	        record.setQuantAas(peptideo.getQuantAas());
-//	        record.setTipoPeptideo(peptideo.getTipoPeptideo());
-//	        record.setSequencia(peptideo.getSequencia());
-//	        record.setEstruturaTridimensional(peptideo.getEstruturaTridimensional());
-//	        record.setMassaMolecular(peptideo.getMassaMolecular());
-//	        record.setImpediEsterico(peptideo.getImpediEsterico());
-//	        record.setHidrofobocidade(peptideo.getHidrofobocidade());
-//	        record.setPontoIsoeletrico(peptideo.getPontoIsoeletrico());
-//	        record.setHidropatia(peptideo.getHidropatia());
-//	        record.setAnfipaticidade(peptideo.getAnfipaticidade());
-//	        record.setHidrofilicidade(peptideo.getHidrofilicidade());
-//	        record.setCargaLiquiTotal(peptideo.getCargaLiquiTotal());
-//	        record.setIndiceBoman(peptideo.getIndiceBoman());
-//	        record.setDescricao(peptideo.getDescricao());
-//	        
-//			Peptideo updated = peptideoService.save(record);
-//			return ResponseEntity.ok().body(updated);
-//		}).orElse(ResponseEntity.notFound().build());
-//	}
-	@PutMapping(value="/{id}")
+	@PutMapping(value = "/{id}")
 	public ResponseEntity<Peptideo> update(@PathVariable("id") Long id, @RequestBody Peptideo peptideo) {
-	  return peptideoService.findById(id)
-	      .map(record -> {
-	        for (Field field : Peptideo.class.getDeclaredFields()) {
-	          field.setAccessible(true);
-	          try {
-	            field.set(record, field.get(peptideo));
-	          } catch (IllegalAccessException | IllegalArgumentException e) {
-	              System.err.println("Error updating field " + field.getName() + ": " + e.getMessage());
-	          }
-	        }
-	        Peptideo updated = peptideoService.save(record);
-	        return ResponseEntity.ok().body(updated);
-	      })
-	      .orElse(ResponseEntity.notFound().build());
+		return peptideoService.findById(id).map(record -> {
+	        record.setPeptideo(peptideo.getPeptideo());
+	        record.setQuantAas(peptideo.getQuantAas());
+	        record.setTipoPeptideo(peptideo.getTipoPeptideo());
+	        record.setSequencia(peptideo.getSequencia());
+	        record.setEstruturaTridimensional(peptideo.getEstruturaTridimensional());
+	        record.setMassaMolecular(peptideo.getMassaMolecular());
+	        record.setImpediEsterico(peptideo.getImpediEsterico());
+	        record.setHidrofobocidade(peptideo.getHidrofobocidade());
+	        record.setPontoIsoeletrico(peptideo.getPontoIsoeletrico());
+	        record.setHidropatia(peptideo.getHidropatia());
+	        record.setAnfipaticidade(peptideo.getAnfipaticidade());
+	        record.setHidrofilicidade(peptideo.getHidrofilicidade());
+	        record.setCargaLiquiTotal(peptideo.getCargaLiquiTotal());
+	        record.setIndiceBoman(peptideo.getIndiceBoman());
+	        record.setDescricao(peptideo.getDescricao());
+	        
+			Peptideo updated = peptideoService.save(record);
+			return ResponseEntity.ok().body(updated);
+		}).orElse(ResponseEntity.notFound().build());
 	}
 
 	@DeleteMapping(path = { "/{id}" })
