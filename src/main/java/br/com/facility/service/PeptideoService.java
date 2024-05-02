@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.facility.domain.Peptideo;
+import br.com.facility.enums.TipoPeptideo;
 import br.com.facility.repository.PeptideoRepository;
 
 @Service
@@ -30,5 +31,9 @@ public class PeptideoService {
 	
 	public void deleteById(Long id) {
 		peptideoRepository.deleteById(id);
+	}
+	
+	public List<Peptideo> findByTipoPeptideo(TipoPeptideo tipoPeptideo){
+		return (List<Peptideo>) peptideoRepository.findByTipoPeptideo(tipoPeptideo);
 	}
 }

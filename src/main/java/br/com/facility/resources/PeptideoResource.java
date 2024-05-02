@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.facility.domain.Peptideo;
+import br.com.facility.enums.TipoPeptideo;
 import br.com.facility.service.PeptideoService;
 
 @RestController
@@ -73,5 +74,13 @@ public class PeptideoResource {
 			peptideoService.deleteById(id);
 			return ResponseEntity.ok().build();
 		}).orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping(path = {"tipoPeptideo/{tipoPeptideo}"})
+	 public ResponseEntity<?> findByTipoPeptideo(@PathVariable("tipoPeptideo") TipoPeptideo
+	tipoPeptideo){
+	List<Peptideo> peptideos = peptideoService.findByTipoPeptideo(tipoPeptideo);
+	return peptideos == null || peptideos.isEmpty()? ResponseEntity.noContent().build() :
+	ResponseEntity.ok(peptideos);
 	}
 }
