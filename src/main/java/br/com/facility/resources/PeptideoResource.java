@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.facility.domain.Peptideo;
+import br.com.facility.dto.PeptideoDTO;
 import br.com.facility.enums.TipoPeptideo;
 import br.com.facility.service.PeptideoService;
 
@@ -30,12 +31,12 @@ public class PeptideoResource {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Peptideo>> findAll() {
-		List<Peptideo> peptideos = peptideoService.findAll();
+	public ResponseEntity<List<PeptideoDTO>> findAll() {
+		List<PeptideoDTO> peptideos = peptideoService.findAll();
 		if (peptideos == null || peptideos.isEmpty()) {
-			return new ResponseEntity<List<Peptideo>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<PeptideoDTO>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<Peptideo>>(peptideos, HttpStatus.OK);
+		return new ResponseEntity<List<PeptideoDTO>>(peptideos, HttpStatus.OK);
 	}
 
 	@GetMapping(path = { "/{id}" })

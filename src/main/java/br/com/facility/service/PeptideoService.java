@@ -2,11 +2,13 @@ package br.com.facility.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.facility.domain.Peptideo;
+import br.com.facility.dto.PeptideoDTO;
 import br.com.facility.enums.TipoPeptideo;
 import br.com.facility.repository.PeptideoRepository;
 
@@ -19,9 +21,10 @@ public class PeptideoService {
 		return peptideoRepository.save(peptideo);
 	}
 	
-	public List<Peptideo> findAll(){
-		return (List<Peptideo>) peptideoRepository.findAll();
+	public List<PeptideoDTO> findAll() {
+		return peptideoRepository.findAll().stream().map(peptideo -> new PeptideoDTO(peptideo)).collect(Collectors.toList());
 	}
+	
 	public Optional<Peptideo> findById(Long id) {
 		return peptideoRepository.findById(id);
 	}
