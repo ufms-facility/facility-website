@@ -2,11 +2,13 @@ package br.com.facility.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.facility.domain.Organismo;
+import br.com.facility.dto.OrganismoDTO;
 import br.com.facility.repository.OrganismoRepository;
 
 @Service
@@ -18,8 +20,8 @@ public class OrganismoService {
 		return organismoRepository.save(organismo);
 	}
 
-	public List<Organismo> findAll() {
-		return (List<Organismo>) organismoRepository.findAll();
+	public List<OrganismoDTO> findAll() {
+		return organismoRepository.findAll().stream().map(organismo -> new OrganismoDTO(organismo)).collect(Collectors.toList());
 	}
 
 	public Optional<Organismo> findById(Long id) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.facility.domain.Organismo;
+import br.com.facility.dto.OrganismoDTO;
 import br.com.facility.service.OrganismoService;
 
 @RestController
@@ -24,12 +25,12 @@ public class OrganismoResource {
 	private OrganismoService organismoService;
 
 	@GetMapping
-	public ResponseEntity<List<Organismo>> findAll() {
-		List<Organismo> organismos = organismoService.findAll();
+	public ResponseEntity<List<OrganismoDTO>> findAll() {
+		List<OrganismoDTO> organismos = organismoService.findAll();
 		if (organismos == null || organismos.isEmpty()) {
-			return new ResponseEntity<List<Organismo>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<OrganismoDTO>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<Organismo>>(organismos, HttpStatus.OK);
+		return new ResponseEntity<List<OrganismoDTO>>(organismos, HttpStatus.OK);
 	}
 
 	@PostMapping
@@ -42,6 +43,7 @@ public class OrganismoResource {
 		return organismoService.findById(id).map(record -> ResponseEntity.ok().body(record))
 				.orElse(ResponseEntity.notFound().build());
 	}
+
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Organismo> update(@PathVariable("id") Long id, @RequestBody Organismo organismo) {
 		return organismoService.findById(id).map(record -> {
