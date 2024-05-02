@@ -62,7 +62,7 @@ public class PeptideoResource {
 	        record.setCargaLiquiTotal(peptideo.getCargaLiquiTotal());
 	        record.setIndiceBoman(peptideo.getIndiceBoman());
 	        record.setDescricao(peptideo.getDescricao());
-	        
+	        record.setOrganismo(peptideo.getOrganismo());
 			Peptideo updated = peptideoService.save(record);
 			return ResponseEntity.ok().body(updated);
 		}).orElse(ResponseEntity.notFound().build());

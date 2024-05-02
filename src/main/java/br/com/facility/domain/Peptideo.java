@@ -34,6 +34,14 @@ public class Peptideo {
 	@JoinColumn(name = "id_organismo", nullable = true, updatable = true)
 	private Organismo organismo;
 	
+	public Organismo getOrganismo() {
+		return organismo;
+	}
+
+	public void setOrganismo(Organismo organismo) {
+		this.organismo = organismo;
+	}
+
 	public Peptideo() {
 	}
 	
