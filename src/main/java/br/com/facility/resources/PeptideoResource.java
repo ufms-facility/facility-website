@@ -80,7 +80,7 @@ public class PeptideoResource {
 	@GetMapping(path = {"tipoPeptideo/{tipoPeptideo}"})
 	 public ResponseEntity<?> findByTipoPeptideo(@PathVariable("tipoPeptideo") TipoPeptideo
 	tipoPeptideo){
-	List<Peptideo> peptideos = peptideoService.findByTipoPeptideo(tipoPeptideo);
+	List<PeptideoDTO> peptideos = peptideoService.findByTipoPeptideo(tipoPeptideo);
 	return peptideos == null || peptideos.isEmpty()? ResponseEntity.noContent().build() :
 	ResponseEntity.ok(peptideos);
 	}

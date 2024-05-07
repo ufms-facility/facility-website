@@ -36,7 +36,7 @@ public class PeptideoService {
 		peptideoRepository.deleteById(id);
 	}
 	
-	public List<Peptideo> findByTipoPeptideo(TipoPeptideo tipoPeptideo){
-		return (List<Peptideo>) peptideoRepository.findByTipoPeptideo(tipoPeptideo);
+	public List<PeptideoDTO> findByTipoPeptideo(TipoPeptideo tipoPeptideo){
+		return peptideoRepository.findByTipoPeptideo(tipoPeptideo).stream().map(peptideo -> new PeptideoDTO(peptideo)).collect(Collectors.toList());
 	}
 }
