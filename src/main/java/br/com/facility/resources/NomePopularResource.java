@@ -19,7 +19,7 @@ import br.com.facility.dto.NomePopularDTO;
 import br.com.facility.service.NomePopularService;
 
 @RestController
-@RequestMapping("/api/v1/organismos")
+@RequestMapping("/api/v1/nomespopulares")
 public class NomePopularResource {
 	@Autowired
 	private NomePopularService nomePopularService;
