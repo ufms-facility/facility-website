@@ -21,6 +21,10 @@ public class Microbiologia implements Serializable {
 	@JoinColumn(name = "id_peptideo", nullable = false, updatable = true)
 	private Peptideo peptideo;
 
+	public Microbiologia() {
+		
+	}
+	
 	public Long getId() {
 		return id;
 	}

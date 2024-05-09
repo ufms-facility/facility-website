@@ -28,8 +28,8 @@ public class CasoSucessoService {
 		return casoSucessoRepository.findById(id);
 	}
 
-	public CasoSucesso update(CasoSucesso CasoSucesso) {
-		return casoSucessoRepository.save(CasoSucesso);
+	public CasoSucesso update(CasoSucesso casoSucesso) {
+		return casoSucessoRepository.save(casoSucesso);
 	}
 
 	public void deleteById(Long id) {
