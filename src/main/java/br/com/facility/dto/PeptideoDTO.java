@@ -1,5 +1,6 @@
 package br.com.facility.dto;
 
+import br.com.facility.domain.Organismo;
 import br.com.facility.domain.Peptideo;
 import br.com.facility.enums.TipoPeptideo;
 
@@ -20,7 +21,7 @@ public class PeptideoDTO {
 	private Integer cargaLiquiTotal;
 	private Double indiceBoman;
 	private String descricao;
-	
+	private Organismo organismo;
 	
 	
 	public PeptideoDTO(Peptideo peptideo) {
@@ -40,6 +41,7 @@ public class PeptideoDTO {
 		this.cargaLiquiTotal = peptideo.getCargaLiquiTotal();
 		this.indiceBoman = peptideo.getIndiceBoman();
 		this.descricao = peptideo.getDescricao();
+		this.organismo = peptideo.getOrganismo();
 	}
 	
 	public Long getId() {
@@ -137,6 +139,14 @@ public class PeptideoDTO {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Organismo getOrganismo() {
+		return organismo;
+	}
+
+	public void setOrganismo(Organismo organismo) {
+		this.organismo = organismo;
 	}
 	
 }
