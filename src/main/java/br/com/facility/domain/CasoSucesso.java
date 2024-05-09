@@ -10,18 +10,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class NomePopular implements Serializable {
+public class CasoSucesso implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String caso;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_organismo", nullable = false, updatable = true)
-	private Organismo organismo;
+	@JoinColumn(name = "id_peptideo", nullable = false, updatable = true)
+	private Peptideo peptideo;
 	
-	public NomePopular() {
+	public CasoSucesso() {
 		
 	}
 
@@ -33,20 +33,20 @@ public class NomePopular implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCaso() {
+		return caso;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCaso(String caso) {
+		this.caso = caso;
 	}
 
-	public Organismo getOrganismo() {
-		return organismo;
+	public Peptideo getPeptideo() {
+		return peptideo;
 	}
 
-	public void setOrganismo(Organismo organismo) {
-		this.organismo = organismo;
+	public void setPeptideo(Peptideo peptideo) {
+		this.peptideo = peptideo;
 	}
 
 	public static long getSerialversionuid() {
