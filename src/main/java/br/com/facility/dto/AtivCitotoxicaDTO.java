@@ -34,8 +34,8 @@ public class AtivCitotoxicaDTO {
 		return ativCitotoxicDesc;
 	}
 
-	public void setAtivCitotoxicDesc(String celularDesc) {
-		this.ativCitotoxicDesc = celularDesc;
+	public void setAtivCitotoxicDesc(String ativCitotoxicDesc) {
+		this.ativCitotoxicDesc = ativCitotoxicDesc;
 	}
 	
 
