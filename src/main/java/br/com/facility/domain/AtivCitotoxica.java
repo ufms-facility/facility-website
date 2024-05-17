@@ -10,18 +10,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Celular implements Serializable {
+public class AtivCitotoxica implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String celularDesc;
+	private String ativCitotoxicDesc;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_peptideo", nullable = false, updatable = true)
 	private Peptideo peptideo;
 	
-	public Celular() {
+	public AtivCitotoxica() {
 		
 	}
 
@@ -33,12 +33,12 @@ public class Celular implements Serializable {
 		this.id = id;
 	}
 
-	public String getCelularDesc() {
-		return celularDesc;
+	public String getAtivCitotoxicDesc() {
+		return ativCitotoxicDesc;
 	}
 
-	public void setCelularDesc(String celularDesc) {
-		this.celularDesc = celularDesc;
+	public void setAtivCitotoxicDesc(String ativCitotoxicDesc) {
+		this.ativCitotoxicDesc = ativCitotoxicDesc;
 	}
 
 	public Peptideo getPeptideo() {
