@@ -19,7 +19,7 @@ public class FacilityApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**").allowedOrigins("http://200.130.152.123:4200");
-                registry.addMapping("/**").allowedMethods("http://200.130.152.123:4200");
+                registry.addMapping("/**").allowedMethods("*");
             }
         };
     }
