@@ -13,4 +13,14 @@ public class FacilityApplication {
 		SpringApplication.run(FacilityApplication.class, args);
 	}
 
+	@Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("http://200.130.152.123");
+                registry.addMapping("/**").allowedMethods("http://200.130.152.123");
+            }
+        };
+    }
 }
