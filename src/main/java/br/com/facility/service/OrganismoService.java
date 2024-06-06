@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import br.com.facility.domain.Organismo;
@@ -22,6 +23,10 @@ public class OrganismoService {
 
 	public List<OrganismoDTO> findAll() {
 		return organismoRepository.findAll().stream().map(organismo -> new OrganismoDTO(organismo)).collect(Collectors.toList());
+	}
+
+	public List<OrganismoDTO> query(Organismo organismo) {
+		return organismoRepository.findAll(Example.of(organismo)).stream().map(o -> new OrganismoDTO(o)).collect(Collectors.toList());
 	}
 
 	public Optional<Organismo> findById(Long id) {
