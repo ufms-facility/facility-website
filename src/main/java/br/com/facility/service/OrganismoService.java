@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.stereotype.Service;
 
 import br.com.facility.domain.Organismo;
@@ -26,7 +28,10 @@ public class OrganismoService {
 	}
 
 	public List<OrganismoDTO> query(Organismo organismo) {
-		return organismoRepository.findAll(Example.of(organismo)).stream().map(o -> new OrganismoDTO(o)).collect(Collectors.toList());
+		return organismoRepository.findAll(Example.of(organismo, ExampleMatcher.matching().withStringMatcher(StringMatcher.CONTAINING)))
+			.stream()
+			.map(o -> new OrganismoDTO(o))
+			.collect(Collectors.toList());
 	}
 
 	public Optional<Organismo> findById(Long id) {
