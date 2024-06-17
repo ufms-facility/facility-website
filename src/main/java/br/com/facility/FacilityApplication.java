@@ -18,8 +18,7 @@ public class FacilityApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://200.130.152.123:4200");
-                registry.addMapping("/**").allowedMethods("*");
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
             }
         };
     }
